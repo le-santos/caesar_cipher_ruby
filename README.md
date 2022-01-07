@@ -9,14 +9,20 @@ This is repo is an activity from The Odin Project [Ruby Programming Curriculum](
 
 Download or fork this repo on you local machine
 
-``` 
+```bash
 git clone https://github.com/le-santos/caesar_cipher_ruby.git
 ```
 
-Open your terminal, go to the project root folder and run:
+Open your terminal, go to the project root folder and install the dependencies:
 
+```bash
+bin/setup
 ```
-ruby main.rb
+
+Then run with:
+
+```bash
+bin/run
 ```
 
 or test it online:

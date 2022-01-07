@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+set -e
+
+echo '== Instalando dependências  =='
+bundle install
+
+echo '== Setup dos executáveis =='
+chmod +x bin/run
+
+echo '== Tudo configurado, pode iniciar ;) =='
