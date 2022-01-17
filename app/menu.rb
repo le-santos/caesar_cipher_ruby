@@ -6,6 +6,7 @@ class Menu
   end
 
   def render
+    system 'clear'
     choice = 's'
 
     while choice != 'n'
