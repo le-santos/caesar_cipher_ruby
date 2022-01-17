@@ -1,21 +1,39 @@
 require 'spec_helper'
 
 RSpec.describe CaesarCipher do
-  describe '.call' do
+  describe '.encrypt' do
     context 'when and shift_param is 2' do
-      context 'and input is character a' do
-        it 'convert string to c' do
-          new_char = CaesarCipher.encrypt('a', 2)
+      context 'and input is character ayz' do
+        it 'convert string to cab' do
+          new_char = CaesarCipher.encrypt('ayz', 2)
 
-          expect(new_char).to eq('c')
+          expect(new_char).to eq('cab')
         end
       end
 
-      context 'and input is character z' do
-        it 'convert string to b' do
-          new_char = CaesarCipher.encrypt('z', 2)
+      context 'and input is character AYZ' do
+        it 'convert string to cab' do
+          new_char = CaesarCipher.encrypt('AYZ', 2)
 
-          expect(new_char).to eq('b')
+          expect(new_char).to eq('CAB')
+        end
+      end
+    end
+
+    context 'when and shift_param is 27 (higher than 26)' do
+      context 'and input is character ayz' do
+        it 'convert string to cab' do
+          new_char = CaesarCipher.encrypt('ayz', 27)
+
+          expect(new_char).to eq('bza')
+        end
+      end
+
+      context 'and input is character AYZ' do
+        it 'convert string to cab' do
+          new_char = CaesarCipher.encrypt('AYZ', 27)
+
+          expect(new_char).to eq('BZA')
         end
       end
     end

@@ -1,4 +1,6 @@
 class CaesarCipher
+  ALPHABET_SIZE = 26.freeze
+
   attr_reader :text, :shift_value
 
   def initialize(text, shift_value)
@@ -11,10 +13,8 @@ class CaesarCipher
   end
 
   def encrypt
-    encode_factor = shift_value % 26
-
-    cipher = text.split('').map do |char|      
-      shift_letter(char, encode_factor)
+    cipher = text.chars.map do |char|
+      modify_letter(char)
     end
 
     cipher.join
@@ -22,16 +22,18 @@ class CaesarCipher
 
   private
 
-  def shift_letter(character, shift_factor)
-    a_code = 'a'.ord
-    letter_code = character.downcase.ord
+  def modify_letter(character)
+    shifted_char = encoded_letter(character).chr
+    return shifted_char unless character == character.upcase
 
-		letters_to_shift = ((letter_code - a_code + 1)% 26) + shift_factor
-		
-		shifted_char = (letters_to_shift + 96).chr
+    shifted_char.upcase
+  end
 
-    return shifted_char.chr unless character == character.upcase
+  def encoded_letter(char)
+    char_code = char.downcase.ord
+    shift_factor = shift_value % ALPHABET_SIZE
+    letter_a_code = 'a'.ord
 
-    shifted_char.chr.upcase
+    (char_code + (shift_factor - letter_a_code) ) % ALPHABET_SIZE + letter_a_code
   end
 end
